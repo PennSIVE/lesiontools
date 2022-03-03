@@ -31,9 +31,9 @@
 #' @export
 lesionclusters=function(probmap,binmap,smooth=1.2,minCenterSize=10,gmm=F,parallel=F,cores=2,c3d_path=NULL){
   if(is.null(c3d_path)){
-    if(file.exists("/Applications/ITK-SNAP.app/Contents/bin/c3d")){
-      c3d_path="/Applications/ITK-SNAP.app/Contents/bin/c3d"
-    }else{
+    if (Sys.which("c3d") != "") {
+      c3d_path = Sys.which("c3d")
+    } else {
       stop("Cannot find path to Convert3D\n
            If it is already installed via ITK-SNAP, please specify the correct path in the function call.\n
            If not, please download the software at http://www.itksnap.org/pmwiki/pmwiki.php?n=Downloads.SNAP3.")
